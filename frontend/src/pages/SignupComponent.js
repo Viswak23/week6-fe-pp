@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import useSignup from "../hooks/useSignup";
 
 const SignupComponent = ({ setIsAuthenticated }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const signup = useSignup(setIsAuthenticated); // Use the signup hook
+  const { signup, email, setEmail, password, setPassword } =
+    useSignup(setIsAuthenticated); // Use the signup hook
 
   const handleSignup = async () => {
     await signup(email, password); // Trigger the signup
