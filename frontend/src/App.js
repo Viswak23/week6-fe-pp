@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
-import SignupComponent from "./pages/SignupComponent";
-import LoginComponent from "./pages/LoginComponent";
+import SignupComponent from "./pages/SignupComponent1";
+import LoginComponent from "./pages/LoginComponent1";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 
@@ -9,7 +9,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
     JSON.parse(localStorage.getItem("user")) || false
   );
-  return ( 
+  return (
     <>
       <BrowserRouter>
         <Navbar
@@ -23,7 +23,7 @@ function App() {
               element={isAuthenticated ? <Home /> : <Navigate to="/signup" />}
             />
             <Route
-              path="/login" 
+              path="/login"
               element={
                 !isAuthenticated ? (
                   <LoginComponent setIsAuthenticated={setIsAuthenticated} />

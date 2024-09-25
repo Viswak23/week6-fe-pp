@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useSignup from "../hooks/useSignup";
+import useField from "../hooks/useField";
 
 const SignupComponent = ({ setIsAuthenticated }) => {
   const { signup, email, setEmail, password, setPassword } =
@@ -8,22 +9,16 @@ const SignupComponent = ({ setIsAuthenticated }) => {
   const handleSignup = async () => {
     await signup(email, password); // Trigger the signup
   };
+  const emailType = useField("email");
+  const passwordType = useField("password");
 
   return (
     <div>
       <h2>Signup</h2>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      Email:
+      <input {...emailType} />
+      Password:
+      <input {...passwordType} />
       <button onClick={handleSignup}>Signup</button>
     </div>
   );
